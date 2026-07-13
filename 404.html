@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found | Papyr</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Public+Sans:wght@300;400;500;600;700&display=swap');
+
+        body { font-family: 'Public Sans', sans-serif; }
+        .serif-text { font-family: 'Merriweather', serif; }
+    </style>
+</head>
+<body class="bg-[#fcfbf9] text-stone-900 antialiased min-h-screen flex flex-col">
+
+    <!-- Navigation Header -->
+    <header class="border-b border-stone-200 bg-[#fcfbf9]/90 backdrop-blur sticky top-0 z-40 px-4 sm:px-6 lg:px-12 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-8">
+            <a href="home.html" class="serif-text text-xl font-bold tracking-tight text-stone-900">
+                Pa<span class="font-normal italic text-amber-800">pyr</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-xs font-semibold uppercase tracking-wider text-stone-500">
+                <a href="home.html" class="hover:text-stone-900 transition">Browse Index</a>
+                <span class="cursor-default">ABOUT</span>
+            </nav>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="hidden sm:inline-block text-xs font-mono text-stone-400 bg-stone-100 px-2.5 py-1 rounded">ISSN 2771-392X</span>
+            <button class="bg-stone-900 hover:bg-stone-800 text-white text-xs font-medium px-4 py-2 rounded shadow-sm transition">
+                Submit Manuscript
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content: Error State -->
+    <div class="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-12 py-16 lg:py-24 flex-1 flex items-center justify-center">
+        <div class="max-w-xl w-full text-center space-y-6">
+
+            <div class="flex justify-center">
+                <div class="w-16 h-16 rounded-full bg-stone-100 border border-stone-200 flex items-center justify-center">
+                    <i data-lucide="file-x" class="w-7 h-7 text-stone-400"></i>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <span class="text-xs uppercase font-bold tracking-widest text-amber-800 font-mono">Index Reference: #ERR.0404</span>
+                <h1 class="serif-text text-3xl lg:text-4xl font-bold tracking-tight text-stone-950">
+                    Record Not Found
+                </h1>
+            </div>
+
+            <p class="text-sm sm:text-base text-stone-600 leading-relaxed max-w-md mx-auto">
+                The manuscript, dataset, or citation you requested does not exist in this archive, may have been withdrawn, or its access permissions have since changed. If you followed a link from another publication, that reference may be out of date.
+            </p>
+
+            <div class="bg-stone-50 border border-stone-200 rounded p-4 text-left text-xs font-mono text-stone-500 max-w-md mx-auto space-y-1">
+                <div class="flex justify-between"><span>Status</span><span class="text-stone-700 font-semibold">404 — Not Found</span></div>
+                <div class="flex justify-between"><span>Requested by</span><span class="text-stone-700">Anonymous Reader</span></div>
+                <div class="flex justify-between"><span>Archive Response</span><span class="text-stone-700">No matching index entry</span></div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                <a href="home.html" class="bg-stone-950 hover:bg-amber-800 text-white px-5 py-2.5 rounded text-xs font-medium transition flex items-center gap-2">
+                    Return to Browse Index <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </a>
+                <span class="text-xs text-stone-400">or search the archive above</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer Area -->
+    <footer class="bg-stone-100 border-t border-stone-200 mt-12 py-6 text-center text-xs text-stone-400 font-medium">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>© 2026 Pixelora Studio</div>
+            <div class="flex gap-4">
+                <span class="text-stone-400">Disclaimer Details</span>
+                <span>|</span>
+                <span class="text-stone-400">All Rights Reserved</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

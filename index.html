@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papyr | Institutional Research Repository</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Public+Sans:wght@300;400;500;600;700&display=swap');
+        
+        body { font-family: 'Public Sans', sans-serif; }
+        .serif-text { font-family: 'Merriweather', serif; }
+    </style>
+</head>
+<body class="bg-[#fcfbf9] text-stone-900 antialiased min-h-screen flex flex-col">
+
+    <header class="border-b border-stone-200 bg-[#fcfbf9]/90 backdrop-blur sticky top-0 z-40 px-4 sm:px-6 lg:px-12 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-8">
+            <a href="#" class="serif-text text-xl font-bold tracking-tight text-stone-900">
+                Pa<span class="font-normal italic text-amber-800">pyr</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-xs font-semibold uppercase tracking-wider text-stone-500">
+                <a href="#" class="hover:text-stone-900 transition">Browse Index</a>
+                <button onclick="openDisclaimerModal()" class="hover:text-stone-900 transition focus:outline-none">ABOUT</button>
+            </nav>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="hidden sm:inline-block text-xs font-mono text-stone-400 bg-stone-100 px-2.5 py-1 rounded">ISSN 2771-392X</span>
+            <button onclick="openDisclaimerModal()" class="bg-stone-900 hover:bg-stone-800 text-white text-xs font-medium px-4 py-2 rounded shadow-sm transition">
+                Submit Manuscript
+            </button>
+        </div>
+    </header>
+
+    <section class="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-12 pt-16 pb-12 text-center border-b border-stone-100">
+        <div class="max-w-3xl mx-auto space-y-6">
+            <span class="text-xs uppercase font-bold tracking-widest text-amber-800 font-mono bg-amber-50 px-3 py-1 rounded-full border border-amber-100/50 inline-block">
+                Institutional Research Archive
+            </span>
+            <h1 class="serif-text text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-stone-950 leading-tight">
+                Preserving and advancing peer-reviewed literature.
+            </h1>
+            <p class="text-base sm:text-lg text-stone-600 leading-relaxed max-w-2xl mx-auto">
+                A centralized, open-access infrastructure hosting multi-disciplinary research assets, conference collections, and preprints. Built to accelerate global scholarly discovery.
+            </p>
+            
+            <div class="max-w-xl mx-auto pt-4">
+                <form action="#" method="GET" class="bg-white border border-stone-200 rounded-xl p-2 shadow-sm focus-within:ring-1 focus-within:ring-amber-800 focus-within:border-amber-800 transition flex items-center gap-2">
+                    <div class="flex items-center gap-3 pl-2 flex-1">
+                        <i data-lucide="search" class="w-4 h-4 text-stone-400 shrink-0"></i>
+                        <input type="text" name="query" placeholder="Search by title, author, keyword, or DOI..." 
+                               class="w-full bg-transparent focus:outline-none text-sm text-stone-900 placeholder-stone-400 font-medium">
+                    </div>
+                    <button type="submit" class="bg-amber-800 hover:bg-amber-900 text-white text-xs font-semibold px-5 py-2.5 rounded-lg transition shrink-0">
+                        Search Archive
+                    </button>
+                </form>
+                <div class="flex items-center justify-center gap-4 pt-3 text-xs text-stone-400 font-medium">
+                    <span>Popular domains:</span>
+                    <a href="#" class="text-stone-600 hover:text-amber-800 underline transition">Computer Science</a>
+                    <a href="#" class="text-stone-600 hover:text-amber-800 underline transition">Biological Sciences</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-stone-50 border-b border-stone-200 py-10">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="space-y-1">
+                <div class="serif-text text-2xl lg:text-3xl font-bold text-stone-950">142,391</div>
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-stone-400">Indexed Papers</div>
+            </div>
+            <div class="space-y-1">
+                <div class="serif-text text-2xl lg:text-3xl font-bold text-stone-950">4.2M</div>
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-stone-400">Annual Downloads</div>
+            </div>
+            <div class="space-y-1">
+                <div class="serif-text text-2xl lg:text-3xl font-bold text-stone-950">100%</div>
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-stone-400">Open Access</div>
+            </div>
+            <div class="space-y-1">
+                <div class="serif-text text-2xl lg:text-3xl font-bold text-stone-950">12 Days</div>
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-stone-400">Avg. Review Period</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-12 py-16 lg:py-24 space-y-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-stone-200 pb-4">
+            <div class="space-y-1">
+                <h2 class="serif-text text-2xl sm:text-3xl font-bold text-stone-950">Subject Classifications</h2>
+                <p class="text-sm text-stone-500">Explore foundational literature arranged across dedicated digital domains.</p>
+            </div>
+            <a href="#" class="text-xs font-semibold uppercase tracking-wider text-amber-800 hover:text-amber-900 transition flex items-center gap-1.5 shrink-0 pb-1">
+                View All Catalogues <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white border border-stone-200 rounded-xl p-6 hover:shadow-md transition flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-10 h-10 rounded-lg bg-stone-100 flex items-center justify-center text-stone-700 group-hover:bg-amber-50 group-hover:text-amber-800 transition">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="serif-text text-lg font-bold text-stone-950">Computer & Information Sciences</h3>
+                        <p class="text-xs leading-relaxed text-stone-600">
+                            Hosting foundational frameworks covering decentralized computing patterns, high-parameter inference architectures, and distributed network analytics.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-stone-100 mt-6 flex items-center justify-between text-xs font-mono text-stone-400">
+                    <span>42,105 Publications</span>
+                    <a href="#" class="text-stone-700 hover:text-amber-800 font-sans font-semibold uppercase tracking-wider flex items-center gap-1 transition">Browse <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                </div>
+            </div>
+
+            <div class="bg-white border border-stone-200 rounded-xl p-6 hover:shadow-md transition flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-10 h-10 rounded-lg bg-stone-100 flex items-center justify-center text-stone-700 group-hover:bg-amber-50 group-hover:text-amber-800 transition">
+                        <i data-lucide="dna" class="w-5 h-5"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="serif-text text-lg font-bold text-stone-950">Biological & Life Sciences</h3>
+                        <p class="text-xs leading-relaxed text-stone-600">
+                            Centralizing clinical data models, multi-omics research matrices, and peer-validated genomic sequence reporting records.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-stone-100 mt-6 flex items-center justify-between text-xs font-mono text-stone-400">
+                    <span>19,850 Publications</span>
+                    <a href="#" class="text-stone-700 hover:text-amber-800 font-sans font-semibold uppercase tracking-wider flex items-center gap-1 transition">Browse <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                </div>
+            </div>
+
+            <div class="bg-white border border-stone-200 rounded-xl p-6 hover:shadow-md transition flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-10 h-10 rounded-lg bg-stone-100 flex items-center justify-center text-stone-700 group-hover:bg-amber-50 group-hover:text-amber-800 transition">
+                        <i data-lucide="atom" class="w-5 h-5"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="serif-text text-lg font-bold text-stone-950">Physical & Materials Sciences</h3>
+                        <p class="text-xs leading-relaxed text-stone-600">
+                            Presenting research on solid-state condensed matter mechanics, topological structural synthesis, and ambient-pressure superconductivity setups.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-stone-100 mt-6 flex items-center justify-between text-xs font-mono text-stone-400">
+                    <span>12,114 Publications</span>
+                    <a href="#" class="text-stone-700 hover:text-amber-800 font-sans font-semibold uppercase tracking-wider flex items-center gap-1 transition">Browse <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="border-t border-stone-200 bg-stone-50/50 py-16 lg:py-24">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-4">
+                <span class="text-xs font-mono uppercase font-bold tracking-widest text-amber-800">Operational Integrity</span>
+                <h2 class="serif-text text-3xl font-bold tracking-tight text-stone-950">Supporting rigorous academic verification.</h2>
+                <p class="text-sm text-stone-600 leading-relaxed">
+                    Papyr interfaces directly with cross-institutional tracking networks to sustain publication accuracy, preserve intellectual property configurations, and maintain long-term repository availability profiles.
+                </p>
+            </div>
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="flex gap-4">
+                    <div class="p-2 h-fit bg-white border border-stone-200 rounded text-stone-700"><i data-lucide="check-circle" class="w-4 h-4"></i></div>
+                    <div class="space-y-1">
+                        <h4 class="text-sm font-semibold text-stone-950">Permanent DOI Assignment</h4>
+                        <p class="text-xs text-stone-600 leading-relaxed">Every document receives a compliant Digital Object Identifier registered via authorized cross-reference networks.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="p-2 h-fit bg-white border border-stone-200 rounded text-stone-700"><i data-lucide="shield" class="w-4 h-4"></i></div>
+                    <div class="space-y-1">
+                        <h4 class="text-sm font-semibold text-stone-950">Peer-Review Preservation</h4>
+                        <p class="text-xs text-stone-600 leading-relaxed">System logs keep complete editorial processing tracks verified by respective faculty panels.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="p-2 h-fit bg-white border border-stone-200 rounded text-stone-700"><i data-lucide="database" class="w-4 h-4"></i></div>
+                    <div class="space-y-1">
+                        <h4 class="text-sm font-semibold text-stone-950">Open Access Compliant</h4>
+                        <p class="text-xs text-stone-600 leading-relaxed">Aligned fully with modern global public funding mandates to offer unrestrained text indexing rights.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="p-2 h-fit bg-white border border-stone-200 rounded text-stone-700"><i data-lucide="bar-chart-3" class="w-4 h-4"></i></div>
+                    <div class="space-y-1">
+                        <h4 class="text-sm font-semibold text-stone-950">Citation Matrix Tracking</h4>
+                        <p class="text-xs text-stone-600 leading-relaxed">Dynamic processing indexes external references to monitor aggregate academic impact variables over time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-12 py-16 text-center">
+        <div class="bg-stone-900 text-[#fcfbf9] rounded-2xl p-8 sm:p-12 lg:p-16 space-y-6 max-w-4xl mx-auto shadow-xl relative overflow-hidden">
+            <div class="absolute -right-16 -bottom-16 serif-text text-9xl text-stone-800/30 select-none pointer-events-none italic">
+                Pa
+            </div>
+            
+            <div class="max-w-xl mx-auto space-y-4 relative z-10">
+                <h2 class="serif-text text-2xl sm:text-3xl font-bold tracking-tight">Are you prepared to archive your material?</h2>
+                <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
+                    We accept contributions from registered institutional researchers, collaborative cross-faculty projects, and verified post-graduate research cohorts.
+                </p>
+                <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="openDisclaimerModal()" class="w-full sm:w-auto bg-[#fcfbf9] hover:bg-stone-100 text-stone-950 text-xs font-semibold px-6 py-3 rounded shadow transition">
+                        Submit Your Manuscript
+                    </button>
+                    <a href="#" class="w-full sm:w-auto border border-stone-700 hover:border-stone-500 hover:text-white text-stone-300 text-xs font-semibold px-6 py-3 rounded transition">
+                        Explore Document Stream
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="disclaimerModal" class="fixed inset-0 bg-stone-900/40 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-xl border border-stone-200 max-w-lg w-full p-6 shadow-xl space-y-4">
+            <div class="flex items-start gap-3">
+                <div class="p-2.5 bg-amber-50 text-amber-800 rounded">
+                    <i data-lucide="info" class="w-5 h-5"></i>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="serif-text text-lg font-bold text-stone-950">About Papyr</h3>
+                    <p class="text-xs text-stone-400 font-mono">Notice & Guidelines</p>
+                </div>
+            </div>
+            
+            <div class="text-sm text-stone-600 leading-relaxed space-y-3">
+                <p>
+                    <strong>Papyr</strong> is an interactive, fictional design simulation and digital narrative project. This website does not provide real academic publishing, research paper hosting, manuscript peer-review, or database archiving services.
+                </p>
+                <p>
+                    Please do not attempt to input sensitive personal data or upload unpublished manuscript materials. For actual scholarly publishing and archival inquiries, please utilize an official, certified institutional repository or validated peer-reviewed journal system.
+                </p>
+            </div>
+            
+            <div class="flex justify-end pt-2">
+                <button onclick="closeDisclaimerModal()" class="bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold px-4 py-2 rounded transition">
+                    I UNDERSTAND
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-stone-100 border-t border-stone-200 mt-auto py-6 text-center text-xs text-stone-400 font-medium">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>© 2026 Pixelora Studio</div>
+            <div class="flex gap-4">
+                <button onclick="openDisclaimerModal()" class="hover:text-amber-800 transition focus:outline-none underline">Disclaimer Details</button>
+                <span>|</span>
+                <span class="text-stone-400">All Rights Reserved</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize vector icon elements
+        lucide.createIcons();
+
+        const disclaimerModal = document.getElementById('disclaimerModal');
+
+        function openDisclaimerModal() {
+            disclaimerModal.classList.remove('hidden');
+        }
+
+        function closeDisclaimerModal() {
+            disclaimerModal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

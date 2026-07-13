@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papyr | Institutional Research Repository </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Public+Sans:wght@300;400;500;600;700&display=swap');
+        
+        body { font-family: 'Public Sans', sans-serif; }
+        .serif-text { font-family: 'Merriweather', serif; }
+        
+        .drawer-transition {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="bg-[#fcfbf9] text-stone-900 antialiased min-h-screen flex flex-col">
+
+    <!-- Navigation Header -->
+    <header class="border-b border-stone-200 bg-[#fcfbf9]/90 backdrop-blur sticky top-0 z-40 px-4 sm:px-6 lg:px-12 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-8">
+            <a href="#" class="serif-text text-xl font-bold tracking-tight text-stone-900">
+                Pa<span class="font-normal italic text-amber-800">pyr</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-xs font-semibold uppercase tracking-wider text-stone-500">
+                <a href="#" class="text-stone-900 border-b-2 border-amber-800 pb-1">Browse Index</a>
+                <button onclick="openDisclaimerModal()" class="hover:text-stone-900 transition focus:outline-none">ABOUT</button>
+            </nav>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="hidden sm:inline-block text-xs font-mono text-stone-400 bg-stone-100 px-2.5 py-1 rounded">ISSN 2771-392X</span>
+            <button onclick="openDisclaimerModal()" class="bg-stone-900 hover:bg-stone-800 text-white text-xs font-medium px-4 py-2 rounded shadow-sm transition">
+                Submit Manuscript
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Responsive Grid Layout -->
+    <div class="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-12 py-8 lg:py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 flex-1">
+        
+        <!-- Left Column: Search & Repository Information -->
+        <div class="lg:col-span-4 space-y-6 lg:space-y-8">
+            <div class="space-y-3">
+                <span class="text-xs uppercase font-bold tracking-widest text-amber-800 font-mono">Digital Archive</span>
+                <h1 class="serif-text text-3xl lg:text-4xl font-bold tracking-tight text-stone-950">
+                    Open access to peer-reviewed literature.
+                </h1>
+                <p class="text-sm text-stone-600 leading-relaxed">
+                    A comprehensive institutional repository hosting multi-disciplinary research papers, conference datasets, and preprints. This platform serves as a centralized gateway for open-access academic literature.
+                </p>
+            </div>
+
+            <!-- Search Field -->
+            <div class="bg-stone-100 border border-stone-200 rounded-xl p-3.5 focus-within:ring-1 focus-within:ring-amber-800 transition">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="search" class="w-4 h-4 text-stone-400 shrink-0"></i>
+                    <input type="text" placeholder="Search by title, author, keyword, or DOI..." 
+                           class="w-full bg-transparent focus:outline-none text-sm text-stone-900 placeholder-stone-400 font-medium">
+                </div>
+            </div>
+
+            <!-- Subject Category Filters -->
+            <div class="space-y-3">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-stone-400">Subject Domains</h3>
+                <div class="flex flex-wrap lg:flex-col gap-2 lg:gap-1">
+                    <button class="px-3 py-1.5 lg:px-3 lg:py-2 rounded text-xs font-medium bg-amber-800 text-white text-left shadow-sm">All Fields (142,391)</button>
+                    <button class="px-3 py-1.5 lg:px-3 lg:py-2 rounded text-xs font-medium bg-white border lg:border-0 lg:bg-transparent border-stone-200 text-stone-600 hover:text-stone-900 text-left transition">Environmental Sciences (24,662)</button>
+                    <button class="px-3 py-1.5 lg:px-3 lg:py-2 rounded text-xs font-medium bg-white border lg:border-0 lg:bg-transparent border-stone-200 text-stone-600 hover:text-stone-900 text-left transition">Computer Science (42,105)</button>
+                    <button class="px-3 py-1.5 lg:px-3 lg:py-2 rounded text-xs font-medium bg-white border lg:border-0 lg:bg-transparent border-stone-200 text-stone-600 hover:text-stone-900 text-left transition">Biological Sciences (19,850)</button>
+                    <button class="px-3 py-1.5 lg:px-3 lg:py-2 rounded text-xs font-medium bg-white border lg:border-0 lg:bg-transparent border-stone-200 text-stone-600 hover:text-stone-900 text-left transition">Physical Sciences (12,114)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Document Stream -->
+        <div class="lg:col-span-8 space-y-8 lg:space-y-12">
+            
+            <div class="flex items-center justify-between border-b border-stone-200 pb-3">
+                <span class="text-xs font-mono text-stone-500">Displaying: Curated Results</span>
+                <span class="text-xs font-mono text-stone-500">Sort: Relevance</span>
+            </div>
+
+            <!-- Document List -->
+            <div id="page-1" class="space-y-8 lg:space-y-12">
+                
+                <!-- Readable Research Paper Entry -->
+                <article class="flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-rose-700 font-bold bg-rose-50 px-2 py-0.5 rounded border border-rose-100">Editorial Expression of Concern</span>
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Open Access</span>
+                        <span class="text-amber-800 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-100">Industry-Funded</span>
+                        <span>DOI: 10.5281/zenodo.3861.hcwrl-2021</span>
+                        <span>• May 2021</span>
+                    </div>
+                    
+                    <h2 class="serif-text text-xl lg:text-2xl font-bold tracking-tight text-stone-950 hover:text-amber-800 transition duration-200 cursor-pointer" onclick="openPaperDrawer()">
+                        Tire-Derived 6PPD-Quinone Loading in Stormwater Runoff Along High-Volume Freight Corridors: Acute Toxicity Risk to Coho Salmon (<em>Oncorhynchus kisutch</em>) in the Puget Lowlands
+                    </h2>
+
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">
+                        Camille Laurent, BA (Cantab.) <span class="text-stone-400 mx-1">•</span> M.Phil. Candidate, University of Cambridge <span class="text-stone-300 mx-2">|</span> Harold Whitfield, Ph.D. <span class="text-stone-400 mx-1">•</span> Cascadia Institute for Watershed Sciences
+                    </div>
+
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        <strong>Abstract:</strong> Coho salmon returning to spawn in urbanized Puget lowland streams continue to experience unexplained pre-spawn mortality events. We quantify 6PPD-quinone, a tire-wear transformation product, in stormwater discharge along a freight corridor serving a regional intermodal distribution hub, and evaluate the performance of a biofiltration retrofit installed by the facility operator...
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <button onclick="openPaperDrawer()" class="bg-stone-950 hover:bg-amber-800 text-white px-4 py-2 rounded text-xs font-medium transition flex items-center gap-2">
+                            Read Full Text <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 34 Citations</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 380k Views</span>
+                    </div>
+                </article>
+
+                <hr class="border-stone-200">
+
+                <!-- Easter Egg Filler Entry -->
+                <article class="opacity-70 flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-amber-800 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-100">Featured</span>
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Open Access</span>
+                        <span>arXiv:2003.11842 [math.NT]</span>
+                        <span>• March 2020</span>
+                    </div>
+                    <h2 class="serif-text text-xl font-bold tracking-tight text-stone-950">
+                        A Spectral Approach to Bounded Gaps Between Primes: Recovering the Maynard–Tao Bound via Random Matrix Linear Statistics
+                    </h2>
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">
+                        Olivia Hart, MMath (Cantab.) <span class="text-stone-400 mx-1">•</span> Faculty of Mathematics, University of Cambridge <span class="text-stone-300 mx-2">|</span> Part III of the Mathematical Tripos, graduated 22 February 2020
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        <strong>Abstract:</strong> The Maynard–Tao construction establishes bounded gaps between primes through a purely combinatorial optimization over sieve weights. We show that this optimization problem is, after a change of variables, identical to a variance-minimization problem already solved in the random matrix literature: the sieve weights that Maynard obtains numerically fall out directly as linear statistics of the Gaussian Unitary Ensemble. This gives a shorter, structurally transparent re-derivation of the existence of bounded prime gaps, and — because the GUE side of the correspondence is already deeply studied — points toward tools (moment methods, orthogonal polynomial asymptotics) that sieve theory alone does not supply, with a plausible bearing on the Elliott–Halberstam conjecture. Originally submitted as a Part III essay (no external funding received); an expanded version was posted to arXiv the following month and profiled in <em>Quanta Magazine</em>. Awarded the Mayhew Prize for outstanding performance in Part III Mathematics, 2020. A referee-reviewed version, essentially unchanged from the arXiv text, was published two years later: Hart, O. "A Spectral Approach to Bounded Gaps Between Primes." <em>Annals of Mathematics</em>, 196(1), 45–89, 2022 (DOI: 10.4007/annals.2022.196.1.2). The author reportedly did not attend the submission process personally and, asked for comment upon acceptance, is said to have replied: <em>"omg sure, whatever makes them happy!! I'd already moved on to the next adventure by then anyway ✨ the universe already knew it was gonna work out, that's just how it goes!!"</em>
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 618 Citations</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 112k Views</span>
+                    </div>
+                </article>
+
+                <hr class="border-stone-200">
+
+                <!-- Easter Egg Filler Entry -->
+                <article class="opacity-70 flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Open Access</span>
+                        <span>arXiv:2004.09217 [math.NT]</span>
+                        <span>• April 2020</span>
+                    </div>
+                    <h2 class="serif-text text-xl font-bold tracking-tight text-stone-950">
+                        A Note on Chen Primes
+                    </h2>
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">
+                        Olivia Hart, MMath (Cantab.) <span class="text-stone-400 mx-1">•</span> Faculty of Mathematics, University of Cambridge <span class="text-stone-300 mx-2">|</span> Part III of the Mathematical Tripos, graduated 22 February 2020
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        Two-page note. Chen (1966) showed that infinitely many primes p have p+2 either prime or a product of two primes. Plugging the spectral weights of [Hart, arXiv:2003.11842] into Chen's sieve setup, rather than Maynard's, costs nothing extra: the same variance bound applies term-for-term, and an explicit bound on gaps between Chen primes falls out with no further argument. Recorded here only because it does not appear to be written down anywhere else. Later typeset and published, apparently without the author's involvement beyond signing off on the proofs: Hart, O. "A Note on Chen Primes." <em>Comptes Rendus Mathématique</em>, 359(4), 401–404, 2021 (DOI: 10.5802/crmath.187).
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 174 Citations</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 26k Views</span>
+                    </div>
+                </article>
+
+                <hr class="border-stone-200">
+
+                <!-- Easter Egg Filler Entry -->
+                <article class="opacity-70 flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Open Access</span>
+                        <span>Final-Year Dissertation — Dept. of Architecture</span>
+                        <span>• May 2018</span>
+                    </div>
+                    <h2 class="serif-text text-xl font-bold tracking-tight text-stone-950">
+                        Aerodynamic Damping of Crosswind-Induced Vibration in Slender High-Rise Towers: A Coupled Wake-Oscillator and Structural Design Study
+                    </h2>
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">
+                        Claire Reverdin <span class="text-stone-400 mx-1">•</span> Department of Architecture, University of Cambridge <span class="text-stone-300 mx-2">|</span> Olivia Hart <span class="text-stone-400 mx-1">•</span> Faculty of Mathematics, University of Cambridge (Mathematical Tripos, Part IB)
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        <strong>Abstract:</strong> Slender residential towers with height-to-width ratios exceeding 8:1 are increasingly susceptible to vortex-induced crosswind vibration, particularly near lock-in, where vortex shedding frequency approaches the structure's first-mode natural frequency. This dissertation develops a coupled aerodynamic-structural model for a hypothetical 62-storey residential tower and proposes a tuned mass damper configuration sized against a closed-form approximation to the governing van der Pol-type wake-oscillator equations, derived in collaboration with O. Hart (Faculty of Mathematics). The resulting damping strategy reduces peak resonant lateral acceleration to within occupant-comfort limits recommended under ISO 10137 across the modeled wind-speed range. The architectural contribution — massing, damper placement, and floor plate implications — is the author's own; the closed-form wake-oscillator solution was developed jointly and is presented in full in Appendix C.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 19 Citations</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 4.3k Views</span>
+                    </div>
+                </article>
+
+                <hr class="border-stone-200">
+
+                <!-- Filler Archive Entry -->
+                <article class="opacity-70 flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Open Access</span>
+                        <span>Report No. WDOE-KV-1519</span>
+                        <span>• 2019</span>
+                    </div>
+                    <h2 class="serif-text text-xl font-bold tracking-tight text-stone-950">
+                        Baseline Macroinvertebrate and Water Chemistry Survey, Kent Valley Tributaries (2015–2019)
+                    </h2>
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">
+                        Washington State Department of Ecology, Stormwater Compliance Division
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        Multi-year benthic macroinvertebrate index and general water chemistry survey across Kent Valley tributary streams, including Harmon Creek.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 3 Citations</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 890 Views</span>
+                    </div>
+                </article>
+
+                <hr class="border-stone-200">
+
+                <!-- Filler Archive Entry -->
+                <article class="opacity-70 flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Open Access</span>
+                        <span class="text-amber-800 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-100">Industry-Funded</span>
+                        <span>DOI: 10.5281/zenodo.3902.cbafr-2021</span>
+                        <span>• August 2021</span>
+                    </div>
+                    <h2 class="serif-text text-xl font-bold tracking-tight text-stone-950">
+                        Comparative Cost-Benefit Analysis of Voluntary vs. Mandated Stormwater Retrofits for Intermediate Freight Facilities
+                    </h2>
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">
+                        Marcus Voelker, M.P.P. <span class="text-stone-400 mx-1">•</span> Alpine Logistics Corp Policy Institute
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        A policy-economics comparison of voluntary industry stewardship programs against mandated regulatory retrofit schedules, using the Kent Valley Intermodal Hub as a primary case study.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 2 Citations</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 1.2k Views</span>
+                    </div>
+                </article>
+
+                <hr class="border-stone-200">
+
+                <!-- Secondary Static Entry for Layout Scale -->
+                <article class="opacity-70 flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Open Access</span>
+                        <span>DOI: 10.1103/PhysRevLett</span>
+                        <span>• January 2026</span>
+                    </div>
+                    <h2 class="serif-text text-xl font-bold tracking-tight text-stone-950">
+                        Analysis of High-Temperature Topological Transitions in Carbon-Sulfur-Hydrogen Networks
+                    </h2>
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">Lucas Bennett, Ph.D. <span class="text-stone-400 mx-1">•</span> Cavendish Laboratory, University of Cambridge</div>
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        <strong>Abstract:</strong> Achieving stable ambient-temperature superconductivity remains a central objective in condensed matter systems. This study outlines synthesized structural layouts exhibiting specialized resistance profiles under precise pressure application settings...
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 89 Citations</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 182k Views</span>
+                    </div>
+                </article>
+
+                <hr class="border-stone-200">
+
+                <!-- Easter Egg Filler Entry -->
+                <article class="opacity-70 flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Open Access</span>
+                        <span>DOI: 10.31237/cus.ebm.2021.0447</span>
+                        <span>• November 2021</span>
+                    </div>
+                    <h2 class="serif-text text-xl font-bold tracking-tight text-stone-950">
+                        Determinants of Perceived Deliciousness: A Structural Equation Modeling Approach to Sambal Spiciness Tolerance Among Generation Z Entrepreneurship Students in Surabaya
+                    </h2>
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">
+                        Davina Bianglala Lolang <span class="text-stone-400 mx-1">•</span> Faculty of Entrepreneurship and Business, Ciputra University, Surabaya <span class="text-stone-300 mx-2">|</span> Rama Wiradinata <span class="text-stone-400 mx-1">•</span> Faculty of Entrepreneurship and Business, Ciputra University, Surabaya
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        <strong>Abstract:</strong> This study employs a structural equation modeling (SEM) approach to examine the moderating role of Instagram aesthetic exposure on self-reported sambal spiciness tolerance among 214 undergraduate entrepreneurship majors. Findings indicate a statistically significant positive relationship (&beta; = 0.41, p &lt; 0.01) between sambal photogenicity and perceived enjoyment, independent of actual Scoville rating, with implications for canteen vendor marketing strategy...
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 1 Citation</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 4,951 Views</span>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Document List, Page 2 -->
+            <div id="page-2" class="space-y-8 lg:space-y-12 hidden">
+
+                <!-- Rebuttal Paper - Clickable -->
+                <article class="flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-rose-700 font-bold bg-rose-50 px-2 py-0.5 rounded border border-rose-100">Rebuttal / Commentary</span>
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Open Access</span>
+                        <span>arXiv:2503.09114 [stat.AP]</span>
+                        <span>• March 2025</span>
+                    </div>
+
+                    <h2 class="serif-text text-xl lg:text-2xl font-bold tracking-tight text-stone-950 hover:text-amber-800 transition duration-200 cursor-pointer" onclick="openOliviaDrawer()">
+                        Statistical Anomalies in the Harmon Creek 6PPD-Quinone Remediation Dataset: A Reanalysis of Laurent et al. (2021)
+                    </h2>
+
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">
+                        Olivia Hart, MMath (Cantab.) <span class="text-stone-400 mx-1">•</span> Independent
+                    </div>
+
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        <strong>Abstract:</strong> We reanalyze the publicly available summary statistics from Laurent et al. (2021), previously credited with substantially improving 6PPD-quinone loading outcomes near a major logistics facility. Three purely statistical irregularities are identified from the published tables alone: an anomalous leading-digit distribution, an implausibly uniform percent-reduction across independent outfalls, and a missingness pattern at the single highest-concentration site inconsistent with a missing-completely-at-random assumption. None of these findings speak to the underlying environmental chemistry; they concern only the internal statistical consistency of the published dataset. We take no position on intent...
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <button onclick="openOliviaDrawer()" class="bg-stone-950 hover:bg-amber-800 text-white px-4 py-2 rounded text-xs font-medium transition flex items-center gap-2">
+                            Read Full Text <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 94 Citations</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 215k Views</span>
+                    </div>
+                </article>
+
+                <hr class="border-stone-200">
+
+                <!-- Filler Archive Entry: Independent Statistical Replication -->
+                <article class="opacity-70 flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Corroborates Reanalysis</span>
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Open Access</span>
+                        <span>DOI: 10.1214/25-AOAS2091</span>
+                        <span>• January 2026</span>
+                    </div>
+                    <h2 class="serif-text text-xl font-bold tracking-tight text-stone-950">
+                        Confirmatory Reanalysis of Reporting Irregularities in Freight-Corridor Stormwater Studies: A Multi-Site Benford Audit
+                    </h2>
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">
+                        Anjali Kapoor, Ph.D. <span class="text-stone-400 mx-1">•</span> Department of Statistics, London School of Economics <span class="text-stone-300 mx-2">|</span> Felix Grahn, Ph.D. <span class="text-stone-400 mx-1">•</span> Department of Statistics, London School of Economics
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        <strong>Abstract:</strong> A widely circulated 2025 preprint identified digit-distribution and missingness anomalies in a single industry-funded stormwater remediation study. Absent a baseline, such findings are difficult to interpret: some deviation from Benford's Law occurs even in legitimate small environmental datasets. We construct a comparison corpus of 34 similarly structured, independently audited freight-corridor and industrial stormwater compliance studies and show that the Harmon Creek dataset is a statistical outlier relative to this baseline on all three previously reported measures, at a significance level not observed in any comparison study. We take this as independent corroboration that the original anomalies reflect a property of this specific dataset rather than a general limitation of the statistical tests used to detect them.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 52 Citations</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 47k Views</span>
+                    </div>
+                </article>
+
+                <hr class="border-stone-200">
+
+                <!-- Filler Archive Entry: Independent Environmental Follow-Up -->
+                <article class="opacity-70 flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Open Access</span>
+                        <span>DOI: 10.1021/acs.est.6c01734</span>
+                        <span>• February 2026</span>
+                    </div>
+                    <h2 class="serif-text text-xl font-bold tracking-tight text-stone-950">
+                        Independent Verification of 6PPD-Quinone Loading at the Harmon Creek HC-6 Outfall: A Follow-Up Field Assessment
+                    </h2>
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">
+                        Priya Nandakumar, Ph.D. <span class="text-stone-400 mx-1">•</span> Center for Urban Waters, University of Washington <span class="text-stone-300 mx-2">|</span> Devon Achterberg, Ph.D. <span class="text-stone-400 mx-1">•</span> Center for Urban Waters, University of Washington
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        <strong>Abstract:</strong> Prompted by a widely circulated statistical reanalysis questioning a 2021 industry-funded stormwater retrofit study, we independently resampled the previously excluded HC-6 outfall and four replicate sites over the 2025 wet season. Measured 6PPD-quinone concentrations at HC-6 remained elevated well above acute coho LC50 thresholds, inconsistent with the original study's implied facility-wide performance. Comparison against the original 2021 sampling further indicates a decline in treatment efficacy consistent with progressive saturation of the bioretention media's sorption capacity, a well-documented failure mode in green stormwater infrastructure absent a maintenance and media-replacement schedule. Facility-wide reduction, properly accounting for HC-6 and observed 2025 performance, is substantially lower than the 92.0% originally reported.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 31 Citations</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 58k Views</span>
+                    </div>
+                </article>
+
+                <hr class="border-stone-200">
+
+                <!-- Filler Archive Entry: Regulatory Report -->
+                <article class="opacity-70 flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-stone-500 font-bold bg-stone-100 px-2 py-0.5 rounded border border-stone-200">Government Report</span>
+                        <span>Report No. WDOE-KV-2605</span>
+                        <span>• May 2026</span>
+                    </div>
+                    <h2 class="serif-text text-xl font-bold tracking-tight text-stone-950">
+                        Preliminary Findings: Re-Examination of Stormwater Compliance Certification, Alpine Logistics Corp Kent Valley Intermodal Hub
+                    </h2>
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">
+                        Washington State Department of Ecology, Stormwater Compliance Division
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        Following public reporting on statistical and field-verification irregularities in a 2021 third-party study relied upon in connection with Administrative Order No. AO-1912-KV, the Department reopened its file on Alpine Logistics Corp's certified compliance at the Kent Valley Intermodal Hub. This preliminary memorandum summarizes the Department's own site re-inspection (April 2026), a review of maintenance records for the HC-3 through HC-6 outfalls, and its assessment of the 2021 study against current Department data-quality guidance for third-party compliance monitoring. The Department finds the facility's bioretention media has not been replaced or serviced since original installation in 2020, consistent with the sorption-saturation pattern reported independently by the University of Washington Center for Urban Waters. A determination on Alpine Logistics Corp's continued compliance status, and on the adequacy of the 2021 study as a basis for the Department's prior closure of this matter, is pending completion of the Department's review.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 4 Citations</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 89k Views</span>
+                    </div>
+                </article>
+
+                <hr class="border-stone-200">
+
+                <!-- Easter Egg Filler Entry -->
+                <article class="opacity-70 flex flex-col items-start space-y-3">
+                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Open Access</span>
+                        <span>IACR ePrint 2019/0847</span>
+                        <span>• June 2019</span>
+                    </div>
+                    <h2 class="serif-text text-xl font-bold tracking-tight text-stone-950">
+                        Targeted Passphrase Recovery via Behavioral and Linguistic Profiling: A Statistical Framework
+                    </h2>
+                    <div class="text-xs sm:text-sm font-medium text-stone-700">
+                        Olivia Hart <span class="text-stone-400 mx-1">•</span> Faculty of Mathematics, University of Cambridge (Mathematical Tripos, Part II)
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
+                        <strong>Abstract:</strong> Dictionary and rule-based attacks against user-chosen passphrases typically draw on generic wordlists and population-level frequency models detached from the individual target. We present a framework for constructing radically smaller, high-precision candidate sets by incorporating structured behavioral and linguistic signals — writing style, stated preferences, biographical detail, and relationship graphs — drawn from a target's own social footprint rather than from breach-derived corpora. Tested against a corpus of passphrases assembled by each subject's own acquaintances rather than by security researchers, the resulting candidate sets recover the correct passphrase at a substantially higher rate than conventional dictionary attacks while remaining several orders of magnitude smaller, suggesting that a sufficiently detailed personal model of a target is, in practice, a more effective attack primitive than raw computational guessing power. No claim is made regarding the security of any specific cipher; the contribution concerns keyspace reduction prior to decryption, not cryptanalysis of the underlying encryption scheme. Submitted for internal departmental assessment only; posted to the IACR Cryptology ePrint Archive by the author's supervisor without further involvement from the author, who is reported to have waved off requests for revisions with: <em>"omg this baby is not mature yet but sure, whatever!! ✨ send it if you want it that badly lol"</em> <em>Note added in proof:</em> aspects of this framework were later adapted, with the author's informal technical consultation, into an internal analysis toolkit developed for the Strategic Crisis Response Command (SCRC), Cyber-Forensics Division.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
+                        <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 76 Citations</span>
+                        <span class="flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 9.4k Views</span>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex items-center justify-center gap-1 pt-8 pb-2 text-xs font-mono text-stone-500">
+                <button id="pg-prev" onclick="papyrGoToPage(1)" class="px-3 py-1.5 rounded border border-stone-200 hover:bg-stone-100 transition cursor-not-allowed opacity-50">&laquo; Prev</button>
+                <button id="pg-1" onclick="papyrGoToPage(1)" class="w-8 h-8 rounded bg-stone-950 text-white font-medium">1</button>
+                <button id="pg-2" onclick="papyrGoToPage(2)" class="w-8 h-8 rounded border border-stone-200 hover:bg-stone-100 transition">2</button>
+                <button class="w-8 h-8 rounded border border-stone-200 hover:bg-stone-100 transition">3</button>
+                <span class="px-1 text-stone-400">…</span>
+                <button class="min-w-[2.75rem] h-8 px-2 rounded border border-stone-200 hover:bg-stone-100 transition">1,847</button>
+                <button id="pg-next" onclick="papyrGoToPage(2)" class="px-3 py-1.5 rounded border border-stone-200 hover:bg-stone-100 transition">Next &raquo;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESPONSIVE INLINE READING SHEET -->
+    <div id="paperDrawer" class="fixed inset-y-0 right-0 w-full lg:w-[55%] bg-white border-l border-stone-200 shadow-2xl z-50 transform translate-x-full drawer-transition flex flex-col">
+        
+        <!-- Sheet Header Bar -->
+        <div class="px-4 sm:px-6 py-4 border-b border-stone-200 flex items-center justify-between bg-stone-50">
+            <div class="flex items-center gap-2.5">
+                <button onclick="closePaperDrawer()" class="p-1.5 hover:bg-stone-200 rounded text-stone-600 transition" aria-label="Close document panel">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+                <span class="text-xs font-mono font-bold tracking-wider text-stone-500 uppercase">Document Reader</span>
+            </div>
+            <div>
+                <button class="px-3 py-1.5 bg-white border border-stone-200 hover:bg-stone-50 text-stone-700 rounded text-xs font-medium flex items-center gap-1.5 transition">
+                    <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+                </button>
+            </div>
+        </div>
+
+        <!-- Sheet Scrollable Document Text Content -->
+        <div class="p-6 sm:p-8 lg:p-12 overflow-y-auto flex-1 max-w-3xl mx-auto space-y-6">
+            
+            <!-- Metadata Headers -->
+            <div class="space-y-3 border-b border-stone-200 pb-6">
+                <div class="bg-rose-50 border border-rose-200 rounded p-3 text-xs sm:text-sm text-rose-900 flex gap-2 items-start">
+                    <i data-lucide="alert-triangle" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+                    <span><strong>Editorial Expression of Concern (May 2026):</strong> Following independently published statistical and field-verification analyses questioning the data underlying this article's central findings, the repository has flagged this record pending review. The article has not been retracted and remains available in its originally published form.</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-stone-400">
+                    <span>Index Reference: #2105.6PPDQ</span>
+                    <span>•</span>
+                    <span>Received: January 11, 2021</span>
+                    <span>•</span>
+                    <span>Accepted: April 22, 2021</span>
+                    <span>•</span>
+                    <span>Published: May 12, 2021</span>
+                </div>
+                <h1 class="serif-text text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 leading-tight">
+                    Tire-Derived 6PPD-Quinone Loading in Stormwater Runoff Along High-Volume Freight Corridors: Acute Toxicity Risk to Coho Salmon (<em>Oncorhynchus kisutch</em>) in the Puget Lowlands
+                </h1>
+                
+                <div class="pt-2 text-stone-800 text-xs sm:text-sm space-y-1">
+                    <div><strong>Camille Laurent, BA (Cantab.)</strong> — Department of Zoology, University of Cambridge; Visiting Research Affiliate, Cascadia Institute for Watershed Sciences <span class="text-stone-400">(M.Phil. Candidate, two-year research track; this work forms the basis of the author's master's thesis, submitted 2021)</span></div>
+                    <div><strong>Owen Marsh, M.Sc.</strong> — Field Ecology Program, Cascadia Institute for Watershed Sciences</div>
+                    <div><strong>Renata Aguilar, Ph.D.</strong> — Department of Civil & Environmental Engineering, University of Washington (Statistical Consultation)</div>
+                    <div><strong>Harold Whitfield, Ph.D.</strong> — Cascadia Institute for Watershed Sciences <span class="text-stone-400">(Thesis Advisor; Senior Author)</span></div>
+                </div>
+                <div class="pt-1 text-xs text-stone-500 font-mono">
+                    Corresponding author: c.laurent@cam.ac.uk &nbsp;|&nbsp; ORCID: 0000-0002-8841-773X
+                </div>
+            </div>
+
+            <!-- Formal Abstract Section -->
+            <div class="bg-stone-50 border-l-2 border-stone-400 p-4 rounded-r space-y-1.5">
+                <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono">Abstract</h4>
+                <p class="text-stone-700 text-xs sm:text-sm leading-relaxed italic">
+                    Urban stormwater runoff has been linked to recurring pre-spawn mortality in coho salmon (<em>Oncorhynchus kisutch</em>) returning to lowland streams of the Puget Sound basin. Following the 2020 identification of 6PPD-quinone — an oxidative transformation product of the tire antiozonant 6PPD — as a principal causal toxicant (Tian et al., 2020), attention has turned to source areas with concentrated tire-wear particle generation, including high-volume freight corridors. This study quantified 6PPD-quinone concentrations in stormwater discharge along Harmon Creek, which receives runoff from State Route 167 and the Alpine Logistics Corp Kent Valley Intermodal Hub, across two coho return cycles (Wet Season 1: Oct 2019–Mar 2020; Wet Season 2: Oct 2020–Mar 2021). We evaluated the relationship between average daily truck volume and 6PPD-quinone loading, and assessed the performance of a bioretention/biofiltration retrofit installed by the facility operator between Ecology's December 2019 administrative order and the onset of Wet Season 2. Across 9 monitored sites, first-flush 6PPD-quinone concentrations ranged from 0.18 to 4.92 &mu;g/L in Wet Season 1, exceeding literature-derived acute LC50 thresholds for coho at 7 of 9 sites. Wet Season 2 sampling indicated a mean reduction in 6PPD-quinone concentration of 92.0% across treated outfalls, accompanied by a decline in observed pre-spawn mortality from 61% to 9% among tracked carcass surveys. We discuss these findings in the context of green stormwater infrastructure performance, note substantive data limitations at one high-traffic site and a truncated media-maturation period, and recommend an expanded, independently verified monitoring program before broader conclusions on retrofit efficacy are drawn.
+                </p>
+            </div>
+
+            <!-- Keywords -->
+            <div class="text-xs text-stone-500 flex flex-wrap gap-2 items-center">
+                <span class="font-bold uppercase tracking-widest text-stone-400 font-mono text-[10px]">Keywords</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">6PPD-quinone</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">tire wear particles</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">coho salmon</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">urban runoff mortality syndrome</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">green stormwater infrastructure</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">freight corridor</span>
+            </div>
+
+            <!-- Article Body -->
+            <div class="space-y-4 text-stone-800 text-sm sm:text-base leading-relaxed">
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">1. Introduction</h3>
+                <p>
+                    Since the 1990s, biologists in the Puget Sound basin have documented a recurring phenomenon in which adult coho salmon die within hours of entering urban streams to spawn, often before completing redd construction, and frequently exhibiting no external signs of disease or injury. This pattern, termed Urban Runoff Mortality Syndrome (URMS), was strongly associated with the first flush of autumn stormwater but resisted causal identification for nearly three decades despite extensive toxicological screening (Scholz et al., 2011; Feist et al., 2017).
+                </p>
+                <p>
+                    In December 2020, a non-targeted analytical chemistry effort identified the causal agent: 6PPD-quinone (6PPD-q), an ozone-driven transformation product of N-(1,3-dimethylbutyl)-N'-phenyl-p-phenylenediamine (6PPD), an antiozonant compounded into essentially all vehicle and commercial vehicle tires to prevent rubber cracking (Tian et al., 2020). 6PPD-q is acutely lethal to coho salmon at concentrations in the sub-microgram-per-liter range, making it among the most potent toxicants ever characterized for a vertebrate species in an environmentally realistic exposure scenario.
+                </p>
+                <p>
+                    Tire-wear particle generation, and by extension 6PPD-q loading, scales with vehicle mass, tire count, braking frequency, and cumulative vehicle-miles traveled — all of which are disproportionately elevated in corridors serving freight and drayage traffic relative to typical passenger vehicle corridors. This raises a direct and, for the logistics sector, commercially material question: do distribution and intermodal freight hubs represent point-source-scale contributors to 6PPD-q loading in adjacent salmon-bearing waters, and can engineered stormwater controls meaningfully reduce that loading?
+                </p>
+                <p>
+                    This study was conducted along Harmon Creek, a fourth-order tributary in the Kent Valley (King County, Washington) that receives channelized stormwater from a segment of State Route 167 and from the Alpine Logistics Corp Kent Valley Intermodal Hub, a 41-hectare truck marshalling, cross-dock, and trailer storage facility handling an estimated 2,600 heavy-duty truck movements per day. Following a widely reported pre-spawn coho die-off at the Harmon Creek confluence in November 2019, the lead author began independent baseline field monitoring the following month as part of a master's thesis project on urban runoff mortality syndrome in Kent Valley tributaries, prior to and independent of any facility involvement. The Washington State Department of Ecology issued an administrative order to Alpine Logistics Corp in December 2019 citing unpermitted stormwater discharge; in January 2020, Alpine Logistics Corp's newly established Environmental Stewardship Initiative began funding an expansion of the lead author's ongoing monitoring program through the Cascadia Institute for Watershed Sciences. Alpine Logistics Corp subsequently installed a bioretention and media-filtration retrofit across its four permitted outfalls between April and September 2020, ahead of the second coho return cycle. This paper reports 6PPD-q concentrations and coho pre-spawn mortality observations across both the pre-retrofit (Wet Season 1, 2019–2020) and post-retrofit (Wet Season 2, 2020–2021) return cycles, and their relationship to freight traffic volume.
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">2. Background and Regulatory Context</h3>
+                <p>
+                    Reported acute LC50 values for coho cluster in the range of 0.041–0.095 &mu;g/L in laboratory exposures (Tian et al., 2020), though field-realistic mixtures containing co-occurring tire-wear leachate constituents may modify observed toxicity, and sensitivity is expected to vary across salmonid species and life stage.
+                </p>
+                <p>
+                    Green stormwater infrastructure (GSI) — including bioretention cells, soil-media filtration, and engineered infiltration — has independently been shown to reduce acute toxicity of urban runoff to coho in controlled comparisons (McIntyre et al., 2018; Spromberg et al., 2016), primarily via sorption of organic contaminants to soil and biochar media rather than targeted removal of 6PPD-q specifically. At the time of this study, no state or federal water quality criterion for 6PPD-q existed in Washington; Alpine Logistics Corp's retrofit was undertaken as a best-management-practice commitment associated with its December 2019 administrative order, and this research was commissioned, in part, to independently evaluate that commitment.
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">3. Materials and Methods</h3>
+                <p><strong>3.1 Study Area and Site Selection.</strong> Nine stormwater and in-stream sampling sites were established along a 3.4 km reach of Harmon Creek and its principal tributary storm drains, spanning from approximately 400 m upstream of the Alpine Logistics Corp facility (reference sites HC-1 and HC-2) through the facility's four permitted outfalls (HC-3 through HC-6), a mid-reach integration point (HC-7), and two downstream sites above and below the SR-167 highway crossing (HC-8, HC-9).</p>
+                <p><strong>3.2 Sample Collection.</strong> First-flush grab samples were collected within 90 minutes of the onset of qualifying rainfall events (&ge;2.5 mm following &ge;72 hr antecedent dry period), per the protocol of Peter et al. (2018). Sampling was conducted across 11 qualifying storm events in Wet Season 1 (October 2019–March 2020, pre-retrofit) and 10 qualifying storm events in Wet Season 2 (October 2020–March 2021, post-retrofit). The lead author's Wet Season 1 sampling began in December 2019 as an unfunded thesis pilot effort; Alpine Logistics Corp funding, received in January 2020, supported the expanded nine-site network and chemical analysis from Wet Season 1 onward.</p>
+                <p><strong>3.3 Chemical Analysis.</strong> Samples were filtered (0.7 &mu;m glass fiber), extracted via solid-phase extraction, and analyzed for 6PPD-quinone by liquid chromatography coupled to tandem mass spectrometry (LC-MS/MS) in multiple reaction monitoring mode, with quantification against an isotopically labeled internal standard (6PPD-quinone-d5). Method detection limit was 0.008 &mu;g/L; recoveries in matrix spikes ranged 84–109%.</p>
+                <p><strong>3.4 Biological Monitoring.</strong> Carcass surveys were conducted weekly along the Harmon Creek reach during the October–December coho return period by trained field technicians, following the standardized URMS field necropsy checklist (gill flaring, loss of equilibrium, surface orientation, absence of net-marking or predation injury) used to distinguish stormwater-associated mortality from other causes of death (Scholz et al., 2011; Spromberg et al., 2016).</p>
+                <p><strong>3.5 Retrofit Installation.</strong> Alpine Logistics Corp's bioretention and media-filtration retrofit was constructed across outfalls HC-3 through HC-6 between April and September 2020, with final media placement completed at all four outfalls by mid-September 2020, approximately four to six weeks before the onset of Wet Season 2 first-flush sampling. Manufacturer specifications for the bioretention soil media indicate a recommended 90-day microbial establishment period prior to peak sorption performance.</p>
+                <p><strong>3.6 Traffic and Loading Data.</strong> Average daily truck volume at the facility gate was obtained from Alpine Logistics Corp's internal gate-access logging system for the corresponding sampling dates.</p>
+                <p><strong>3.7 Statistical Analysis.</strong> Site-level 6PPD-q concentrations were log-transformed prior to analysis. Pre/post-retrofit differences were evaluated using paired comparisons at each outfall site; the relationship between daily truck volume and 6PPD-q concentration was evaluated using ordinary least squares regression. All analyses were performed in R (v4.0.3).</p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">4. Results</h3>
+                <p><strong>4.1 Pre-Retrofit 6PPD-Quinone Concentrations.</strong> During Wet Season 1, first-flush 6PPD-q concentrations at facility outfall sites (HC-3–HC-6) ranged from 0.94 to 4.92 &mu;g/L, exceeding the upper literature LC50 estimate (0.095 &mu;g/L) by one to two orders of magnitude. Reference sites upstream of the facility (HC-1, HC-2) ranged from 0.18 to 0.31 &mu;g/L, itself above the acute threshold, reflecting the underlying contribution of SR-167 highway traffic independent of the facility.</p>
+
+                <div class="border border-stone-200 rounded overflow-hidden my-4 text-xs">
+                    <table class="w-full text-left text-stone-600">
+                        <thead class="bg-stone-50 border-b border-stone-200 text-stone-800 uppercase font-mono tracking-wider">
+                            <tr>
+                                <th class="p-3">Site</th>
+                                <th class="p-3">Mean 6PPD-q, Pre-Retrofit (&mu;g/L)</th>
+                                <th class="p-3">Mean 6PPD-q, Post-Retrofit (&mu;g/L)</th>
+                                <th class="p-3">Reduction</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-stone-200 bg-white">
+                            <tr>
+                                <td class="p-3 font-mono">HC-1 (upstream ref.)</td>
+                                <td class="p-3">0.24</td>
+                                <td class="p-3">0.21</td>
+                                <td class="p-3 text-stone-500">12.5%</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-mono">HC-3 (outfall)</td>
+                                <td class="p-3">1.86</td>
+                                <td class="p-3 font-semibold text-emerald-800 bg-emerald-50/50">0.15</td>
+                                <td class="p-3 font-semibold text-emerald-800">92.0%</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-mono">HC-4 (outfall)</td>
+                                <td class="p-3">2.41</td>
+                                <td class="p-3 font-semibold text-emerald-800 bg-emerald-50/50">0.19</td>
+                                <td class="p-3 font-semibold text-emerald-800">92.0%</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-mono">HC-5 (outfall)</td>
+                                <td class="p-3">1.53</td>
+                                <td class="p-3 font-semibold text-emerald-800 bg-emerald-50/50">0.12</td>
+                                <td class="p-3 font-semibold text-emerald-800">92.0%</td>
+                            </tr>
+                            <tr class="bg-amber-50/40">
+                                <td class="p-3 font-mono">HC-6 (outfall, adj. to marshalling yard)</td>
+                                <td class="p-3">4.92</td>
+                                <td class="p-3 italic text-stone-400">n/a<sup>†</sup></td>
+                                <td class="p-3 italic text-stone-400">n/a<sup>†</sup></td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-mono">HC-9 (downstream)</td>
+                                <td class="p-3">0.68</td>
+                                <td class="p-3 font-semibold text-emerald-800 bg-emerald-50/50">0.09</td>
+                                <td class="p-3 font-semibold text-emerald-800">86.8%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-xs text-stone-500">
+                    <sup>†</sup> Post-retrofit samples at HC-6 were excluded from analysis in 3 of 10 Wet Season 2 sampling events due to reported autosampler calibration faults; the site was omitted from the Wet Season 2 summary statistics reported in Section 4.3 pending equipment replacement.
+                </p>
+
+                <p><strong>4.2 Relationship to Truck Volume.</strong> Across facility outfall sites, log-transformed 6PPD-q concentration was positively associated with average daily truck volume at the corresponding gate count (R&sup2; = 0.71, p &lt; 0.01, n = 33 site-events, HC-6 excluded per above). No statistically significant relationship was observed at upstream reference sites (R&sup2; = 0.06, p = 0.41).</p>
+
+                <p><strong>4.3 Retrofit Performance and Mortality Outcomes.</strong> Across the five outfall and downstream sites with complete pre/post data, mean 6PPD-q reduction was 92.0% (range 86.8–92.0%; SD not reported in source dataset). Concurrent carcass surveys recorded pre-spawn mortality consistent with URMS symptomatology in 61% of recovered coho carcasses (n = 47) in Wet Season 1, declining to 9% (n = 52) in Wet Season 2.</p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">5. Discussion</h3>
+                <p>
+                    These results are consistent with a substantial contribution of freight-corridor tire-wear loading to 6PPD-q concentrations in Harmon Creek, and with a meaningful reduction in that loading following the biofiltration retrofit at four of five outfall sites with complete data. The magnitude and post-retrofit uniformity of the reduction (92.0% at three of four treated outfalls, to one decimal place) is larger, and considerably more consistent across sites, than reductions reported for comparable bioretention media treating mixed contaminant loads in prior work (McIntyre et al., 2018 report 58–79% reduction in aggregate toxic unit loading across heterogeneous sites), and may reflect a design specific to this facility, a narrower range of influent conditions than in prior comparative studies, or unresolved variability that a fuller dataset would reveal.
+                </p>
+                <p>
+                    The missing Wet Season 2 dataset at HC-6 — the outfall situated immediately adjacent to the marshalling yard and the single pre-retrofit site with the highest recorded concentration (4.92 &mu;g/L, more than double the next-highest site) — is a material gap. Repeated equipment fault at the same site across three of ten sampling events, without a corresponding fault at any other autosampler in the network, was not independently investigated as part of this study.
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">6. Limitations</h3>
+                <p>
+                    This study is limited by a two-season monitoring window, reliance on facility-provided (rather than independently metered) truck volume data, the exclusion of the HC-6 site from post-retrofit summary statistics, and a carcass survey method that cannot fully exclude co-occurring stressors (temperature, dissolved oxygen, predation scavenging) as contributors to observed mortality. Wet Season 2 sampling also began only four to six weeks after final media placement at the retrofit outfalls, substantially short of the manufacturer's recommended 90-day microbial establishment period; whether the observed reduction reflects mature, steady-state media performance or an initial adsorptive capacity that may decline with saturation over subsequent seasons cannot be determined from a single post-retrofit wet season. The uniformity of percent-reduction values across independent outfalls (Section 4.3) should be interpreted with caution pending replicate sampling and full disclosure of underlying event-level data, which were not included in the dataset made available to the authors for statistical review.
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">7. Conclusion</h3>
+                <p>
+                    Freight-corridor facilities can be significant, spatially concentrated sources of 6PPD-quinone loading to salmon-bearing urban streams, and engineered biofiltration retrofits appear capable of substantially reducing that loading at treated outfalls. However, the incomplete post-retrofit dataset at the facility's highest-loading site, and the unusually uniform reduction values reported elsewhere, warrant an independently supervised follow-up monitoring program — including third-party autosampler maintenance and unredacted event-level data release — before this retrofit is characterized as a fully validated model for freight-sector 6PPD-q mitigation.
+                </p>
+
+                <!-- Funding & COI -->
+                <div class="bg-stone-50 border border-stone-200 rounded p-4 space-y-3 text-xs sm:text-sm">
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono mb-1">Funding</h4>
+                        <p>This research was supported by a grant from the Alpine Logistics Corp Environmental Stewardship Initiative (Award No. ALC-ESI-2020-033) to the Cascadia Institute for Watershed Sciences, awarded January 2020. Additional in-kind support (gate-access traffic data, site access) was provided by Alpine Logistics Corp.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono mb-1">Conflict of Interest Statement</h4>
+                        <p>The funder participated in study design to the extent of specifying the retrofit installation schedule and approving sampling site access, and reviewed the manuscript prior to submission. The authors declare that this review did not alter the reported results or conclusions. Dr. Whitfield's laboratory received prior, unrelated funding from Alpine Logistics Corp (Award No. ALC-EDU-2018-009, watershed education outreach grant, 2018) predating the events described in this study.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono mb-1">Data Availability</h4>
+                        <p>Aggregated site-level summary data are available in the Supplementary Materials accompanying this record. Event-level raw chromatography files and full autosampler maintenance logs are held by the Cascadia Institute for Watershed Sciences and are available upon request, subject to funder review.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono mb-1">Acknowledgments</h4>
+                        <p>The authors thank field technicians D. Okafor and L. Reyes for carcass survey collection, and Alpine Logistics Corp facility operations staff for site access coordination.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- References Footer Section -->
+            <div class="pt-6 border-t border-stone-200 text-xs text-stone-400 space-y-1 font-mono">
+                <div>[1] Tian, Z., Zhao, H., Peter, K.T., et al. "A ubiquitous tire rubber-derived chemical induces acute mortality in coho salmon." <em>Science</em>, 371(6525), 185–189, 2020.</div>
+                <div>[2] Peter, K.T., Tian, Z., Wu, C., et al. "Using high-resolution mass spectrometry to identify organic contaminants linked to urban stormwater mortality syndrome in coho salmon." <em>Environ. Sci. Technol.</em>, 52(18), 10317–10327, 2018.</div>
+                <div>[3] McIntyre, J.K., Prat, J., Cameron, J., et al. "Green stormwater infrastructure reduces the toxicity of urban runoff to salmonids." <em>Environ. Sci. Technol.</em>, 52(19), 10841–10851, 2018.</div>
+                <div>[4] Spromberg, J.A., Baldwin, D.H., Damm, S.E., et al. "Coho salmon spawner mortality in western US urban watersheds: bioinfiltration prevents lethal storm water impacts." <em>J. Appl. Ecol.</em>, 53(2), 398–407, 2016.</div>
+                <div>[5] Scholz, N.L., Myers, M.S., McCarthy, S.G., et al. "Recurrent die-offs of adult coho salmon returning to spawn in Puget Sound lowland urban streams." <em>PLOS ONE</em>, 6(12), e28013, 2011.</div>
+                <div>[6] Feist, B.E., Buhle, E.R., Baldwin, D.H., et al. "Roads to ruin: conservation threats to a sentinel species across an urban gradient." <em>Ecol. Appl.</em>, 27(8), 2382–2396, 2017.</div>
+                <div>[7] Washington State Department of Ecology. "Administrative Order No. AO-1912-KV: Alpine Logistics Corp, Kent Valley Intermodal Hub." Stormwater Compliance Division, December 2019.</div>
+                <div>[8] Laurent, C. "Urban Runoff Mortality Syndrome in Kent Valley Tributaries: A Baseline Assessment." M.Phil. Thesis Proposal, University of Cambridge, Department of Zoology, filed December 2019 (unpublished).</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Document Reader Drawer: Olivia Hart's Rebuttal -->
+    <div id="oliviaDrawer" class="fixed inset-y-0 right-0 w-full lg:w-[55%] bg-white border-l border-stone-200 shadow-2xl z-50 transform translate-x-full drawer-transition flex flex-col">
+
+        <!-- Sheet Header Bar -->
+        <div class="px-4 sm:px-6 py-4 border-b border-stone-200 flex items-center justify-between bg-stone-50">
+            <div class="flex items-center gap-2.5">
+                <button onclick="closeOliviaDrawer()" class="p-1.5 hover:bg-stone-200 rounded text-stone-600 transition" aria-label="Close document panel">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+                <span class="text-xs font-mono font-bold tracking-wider text-stone-500 uppercase">Document Reader</span>
+            </div>
+            <div>
+                <button class="px-3 py-1.5 bg-white border border-stone-200 hover:bg-stone-50 text-stone-700 rounded text-xs font-medium flex items-center gap-1.5 transition">
+                    <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+                </button>
+            </div>
+        </div>
+
+        <!-- Sheet Scrollable Document Text Content -->
+        <div class="p-6 sm:p-8 lg:p-12 overflow-y-auto flex-1 max-w-3xl mx-auto space-y-6">
+
+            <!-- Metadata Headers -->
+            <div class="space-y-3 border-b border-stone-200 pb-6">
+                <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-stone-400">
+                    <span>Index Reference: #2503.STAT</span>
+                    <span>•</span>
+                    <span>Posted: March 14, 2025</span>
+                </div>
+                <h1 class="serif-text text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 leading-tight">
+                    Statistical Anomalies in the Harmon Creek 6PPD-Quinone Remediation Dataset: A Reanalysis of Laurent et al. (2021)
+                </h1>
+
+                <div class="pt-2 text-stone-800 text-xs sm:text-sm space-y-1">
+                    <div><strong>Olivia Hart, MMath (Cantab.)</strong> — Independent</div>
+                </div>
+                <div class="pt-1 text-xs text-stone-500 font-mono">
+                    ORCID: 0000-0002-8841-773X
+                </div>
+            </div>
+
+            <!-- Formal Abstract Section -->
+            <div class="bg-stone-50 border-l-2 border-stone-400 p-4 rounded-r space-y-1.5">
+                <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono">Abstract</h4>
+                <p class="text-stone-700 text-xs sm:text-sm leading-relaxed italic">
+                    We reanalyze the publicly available summary statistics from Laurent et al. (2021), a widely cited, industry-funded assessment of a stormwater biofiltration retrofit at a major logistics facility, previously credited with substantially improving 6PPD-quinone loading outcomes in an urban salmon-bearing stream. Three purely statistical irregularities are identified from the published tables alone; no raw or event-level data were available to the author. First, the leading-digit distribution of reported concentration measurements departs significantly from the expectation under Benford's Law for naturally occurring, multi-order-of-magnitude environmental data (&chi;&sup2; = 14.7, df = 8, p &lt; 0.01), a pattern more consistent with rounded, adjusted, or partially constructed values than with unmodified field measurements. Second, the reported post-retrofit reduction (92.0%) is identical to one decimal place at three of four independent treatment outfalls; under any physically plausible model of site-to-site variance in soil media composition, flow rate, and antecedent conditions, the probability of this degree of agreement occurring by chance is vanishingly small. Third, the exclusion of the single highest pre-retrofit measurement site (HC-6) from post-retrofit summary statistics — attributed to equipment failure recurring at that site alone — is itself statistically anomalous under a missing-completely-at-random null, and any reasonable imputation for the missing site materially lowers the facility-wide reduction estimate. None of these findings speak to the underlying environmental chemistry, which is outside the scope of this note; they concern only the internal statistical consistency of the published dataset. We take no position on intent.
+                </p>
+            </div>
+
+            <!-- Keywords -->
+            <div class="text-xs text-stone-500 flex flex-wrap gap-2 items-center">
+                <span class="font-bold uppercase tracking-widest text-stone-400 font-mono text-[10px]">Keywords</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">Benford's Law</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">data forensics</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">missing data</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">reanalysis</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">research integrity</span>
+            </div>
+
+            <div class="space-y-4 text-stone-800 text-sm sm:text-base leading-relaxed">
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">1. Introduction</h3>
+                <p>
+                    Laurent et al. (2021) reported that a bioretention retrofit at a freight intermodal facility reduced stormwater 6PPD-quinone concentrations by 92.0% and reduced observed coho pre-spawn mortality from 61% to 9% across a single paired comparison of wet seasons. The study has since been widely cited in industry sustainability reporting and, by the reporting company's own account, materially supported its growth and public reputation over the following several years. Given the single-institution funding arrangement, the modest number of independent monitoring sites (n = 9), and the absence of any published independent replication, a purely statistical audit of the reported summary tables — without reference to the underlying chemistry, which the author is not qualified to evaluate — seemed a reasonable and low-cost check before any party made a material financial decision on the strength of the paper's conclusions.
+                </p>
+                <p>
+                    This note restricts itself to what can be assessed from Tables 1–3 of the published manuscript. No raw chromatography output, autosampler logs, or event-level measurements were available to the author; the original authors state that this material is "available upon request, subject to funder review."
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">2. Digit-Distribution Analysis</h3>
+                <p>
+                    Naturally occurring measurements spanning several orders of magnitude — as stormwater contaminant concentrations typically do — tend to follow Benford's Law: the leading digit 1 occurs roughly 30% of the time, decreasing monotonically through leading digit 9 (Benford, 1938; Nigrini, 2012). This regularity is widely used as a first-pass forensic check on financial, scientific, and electoral datasets, precisely because deviations from it are easy to produce inadvertently through rounding, unit conversion errors, or selective adjustment, and difficult to avoid if one is fabricating or "smoothing" values without deliberately modeling the expected digit distribution. Applying a &chi;&sup2; goodness-of-fit test to the 21 concentration values reported across Tables 1–2 yields a significant departure from the Benford expectation (&chi;&sup2; = 14.7, df = 8, p &lt; 0.01). This test has limited power at n = 21 and should not be treated as dispositive; it is reported as the first of three independent irregularities, not as a stand-alone conclusion.
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">3. Improbability of Uniform Percent-Reduction</h3>
+                <p>
+                    The original paper reports a 92.0% reduction in 6PPD-quinone concentration, to one decimal place, at three of its four treated outfalls (HC-3, HC-4, HC-5), with a fourth, untreated comparison producing 86.8%. Bioretention media performance depends on local soil composition, compaction, flow rate, antecedent moisture, and vegetation establishment — quantities that vary meaningfully between physically distinct outfalls even when built to a common design specification. Modeling site-to-site reduction as independent draws from a distribution with standard deviation consistent with comparable published bioretention studies (McIntyre et al., 2018 report a 58–79% range across heterogeneous sites), the probability of three of four independent sites agreeing to within 0.05 percentage points is well under 1 in 10,000. Agreement this precise is more parsimoniously explained by a shared reporting or rounding process across sites than by three physically independent remediation systems happening to perform identically.
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">4. Missingness at the Highest-Concentration Site</h3>
+                <p>
+                    Site HC-6 recorded the highest pre-retrofit concentration in the study (4.92 &mu;g/L, more than double the next-highest site) and is the only site excluded from post-retrofit summary statistics, attributed to autosampler calibration failure recurring at that specific site across three of ten Wet Season 2 sampling events, with no comparable failure reported at any of the network's other eight sites. Treating site-level equipment failure as independent and identically distributed across the monitoring network, the probability of failure clustering exclusively at the single highest-concentration site at this rate, by chance, is low (p &lt; 0.02 under a simple binomial model; see Little &amp; Rubin, 2019 for the general missing-data framework applied here). Under a missing-completely-at-random assumption, this pattern is difficult to justify; under a missing-not-at-random assumption — in which the missingness is related to the (unobserved) value itself — it is directly compatible with the same data. Substituting HC-6's pre-retrofit value into the reduction model fit to the other three treated sites, holding the fitted relationship between pre-retrofit concentration and reduction magnitude constant, lowers the facility-wide post-retrofit average below the headline 92.0% figure by a material margin.
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">5. Discussion</h3>
+                <p>
+                    Each of the three irregularities above is individually explainable by an innocent cause — rounding conventions, genuinely excellent and coincidentally similar engineering performance, or ordinary equipment failure. Taken together, however, they form a pattern that a purely statistical audit is well suited to flag and poorly suited to resolve. Resolution requires exactly the material the original authors describe as available only "subject to funder review": event-level chromatography output, unredacted autosampler maintenance logs, and — ideally — independent field resampling at HC-6 by a party with no funding relationship to the facility operator. We are not in a position to conduct that resampling and take no position on whether the irregularities identified here reflect data manipulation, uncorrected instrument or transcription error, or some combination; we simply note that the current published record does not, on its own statistical merits, support the confidence with which its conclusions have been publicly represented.
+                </p>
+
+                <!-- Funding & COI -->
+                <div class="bg-stone-50 border border-stone-200 rounded p-4 space-y-3 text-xs sm:text-sm">
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono mb-1">Funding</h4>
+                        <p>No funding was received for this analysis.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono mb-1">Conflict of Interest Statement</h4>
+                        <p>This analysis was originally prepared privately in October 2024 for a personal acquaintance's investment due-diligence and was not, at that time, intended for wider circulation. It was shared informally within a small circle over the following months before a science journalist investigating Alpine Logistics Corp's public sustainability claims obtained a copy through that informal circulation and posted it to arXiv in March 2025; the author was not otherwise involved in its publication. The author reports a personal, non-financial acquaintance with the corresponding author of Laurent et al. (2021). Asked for comment after the analysis began circulating publicly, the author is reported to have said: <em>"wait people are actually upset about this?? it's literally just maths, nothing personal!! people are fighting anything nowadays :("</em></p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono mb-1">Data Availability</h4>
+                        <p>All figures used are drawn from the publicly available tables of Laurent et al. (2021). No new data were collected.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- References Footer Section -->
+            <div class="pt-6 border-t border-stone-200 text-xs text-stone-400 space-y-1 font-mono">
+                <div>[1] Laurent, C., Marsh, O., Aguilar, R., Whitfield, H. "Tire-Derived 6PPD-Quinone Loading in Stormwater Runoff Along High-Volume Freight Corridors." Index Reference #2105.6PPDQ, May 2021.</div>
+                <div>[2] Benford, F. "The Law of Anomalous Numbers." <em>Proc. Am. Philos. Soc.</em>, 78(4), 551–572, 1938.</div>
+                <div>[3] Nigrini, M.J. <em>Benford's Law: Applications for Forensic Accounting, Auditing, and Fraud Detection.</em> Wiley, 2012.</div>
+                <div>[4] Little, R.J.A., Rubin, D.B. <em>Statistical Analysis with Missing Data</em>, 3rd ed. Wiley, 2019.</div>
+                <div>[5] McIntyre, J.K., Prat, J., Cameron, J., et al. "Green stormwater infrastructure reduces the toxicity of urban runoff to salmonids." <em>Environ. Sci. Technol.</em>, 52(19), 10841–10851, 2018.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLEAN, PROFESSIONAL DISCLAIMER MODAL -->
+    <div id="disclaimerModal" class="fixed inset-0 bg-stone-900/40 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-xl border border-stone-200 max-w-lg w-full p-6 shadow-xl space-y-4">
+            <div class="flex items-start gap-3">
+                <div class="p-2.5 bg-amber-50 text-amber-800 rounded">
+                    <i data-lucide="info" class="w-5 h-5"></i>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="serif-text text-lg font-bold text-stone-950">About Papyr</h3>
+                    <p class="text-xs text-stone-400 font-mono">Notice & Guidelines</p>
+                </div>
+            </div>
+            
+            <div class="text-sm text-stone-600 leading-relaxed space-y-3">
+                <p>
+                    <strong>Papyr</strong> is an interactive, fictional design simulation and digital narrative project. This website does not provide real academic publishing, research paper hosting, manuscript peer-review, or database archiving services.
+                </p>
+                <p>
+                    Please do not attempt to input sensitive personal data or upload unpublished manuscript materials. For actual scholarly publishing and archival inquiries, please utilize an official, certified institutional repository or validated peer-reviewed journal system.
+                </p>
+            </div>
+            
+            <div class="flex justify-end pt-2">
+                <button onclick="closeDisclaimerModal()" class="bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold px-4 py-2 rounded transition">
+                    I UNDERSTAND
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Area with Disclaimer Hook -->
+    <footer class="bg-stone-100 border-t border-stone-200 mt-12 py-6 text-center text-xs text-stone-400 font-medium">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>© 2026 Pixelora Studio</div>
+            <div class="flex gap-4">
+                <button onclick="openDisclaimerModal()" class="hover:text-amber-800 transition focus:outline-none underline">Disclaimer Details</button>
+                <span>|</span>
+                <span class="text-stone-400">All Rights Reserved</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Layer -->
+    <script>
+        // Initialize vector icon elements
+        lucide.createIcons();
+
+        // Archive pagination (only pages 1-2 hold real content; higher page
+        // numbers are cosmetic, consistent with a much larger archive)
+        function papyrGoToPage(n) {
+            const page1 = document.getElementById('page-1');
+            const page2 = document.getElementById('page-2');
+            const btn1 = document.getElementById('pg-1');
+            const btn2 = document.getElementById('pg-2');
+            const prevBtn = document.getElementById('pg-prev');
+            const nextBtn = document.getElementById('pg-next');
+
+            const activeClasses = ['bg-stone-950', 'text-white', 'font-medium'];
+            const inactiveClasses = ['border', 'border-stone-200', 'hover:bg-stone-100', 'transition'];
+
+            if (n === 2) {
+                page1.classList.add('hidden');
+                page2.classList.remove('hidden');
+                btn2.classList.add(...activeClasses);
+                btn2.classList.remove(...inactiveClasses);
+                btn1.classList.remove(...activeClasses);
+                btn1.classList.add(...inactiveClasses);
+                prevBtn.classList.remove('cursor-not-allowed', 'opacity-50');
+                nextBtn.classList.add('cursor-not-allowed', 'opacity-50');
+            } else {
+                page2.classList.add('hidden');
+                page1.classList.remove('hidden');
+                btn1.classList.add(...activeClasses);
+                btn1.classList.remove(...inactiveClasses);
+                btn2.classList.remove(...activeClasses);
+                btn2.classList.add(...inactiveClasses);
+                prevBtn.classList.add('cursor-not-allowed', 'opacity-50');
+                nextBtn.classList.remove('cursor-not-allowed', 'opacity-50');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Target reader sheet DOM interface
+        const paperDrawer = document.getElementById('paperDrawer');
+        const oliviaDrawer = document.getElementById('oliviaDrawer');
+        const disclaimerModal = document.getElementById('disclaimerModal');
+
+        function openPaperDrawer() {
+            paperDrawer.classList.remove('translate-x-full');
+            document.body.classList.add('overflow-hidden'); // Lock scroll beneath layer
+        }
+
+        function closePaperDrawer() {
+            paperDrawer.classList.add('translate-x-full');
+            document.body.classList.remove('overflow-hidden'); // Restore layout controls
+        }
+
+        function openOliviaDrawer() {
+            oliviaDrawer.classList.remove('translate-x-full');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeOliviaDrawer() {
+            oliviaDrawer.classList.add('translate-x-full');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function openDisclaimerModal() {
+            disclaimerModal.classList.remove('hidden');
+        }
+
+        function closeDisclaimerModal() {
+            disclaimerModal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
