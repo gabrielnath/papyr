@@ -337,7 +337,7 @@
                         Anjali Kapoor, Ph.D. <span class="text-stone-400 mx-1">•</span> Department of Statistics, London School of Economics <span class="text-stone-300 mx-2">|</span> Felix Grahn, Ph.D. <span class="text-stone-400 mx-1">•</span> Department of Statistics, London School of Economics
                     </div>
                     <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
-                        <strong>Abstract:</strong> A widely circulated 2025 preprint identified digit-distribution, cross-site clustering, and missingness anomalies in a single industry-funded stormwater remediation study, alongside two arithmetic inconsistencies in the study's own published tables that require no statistical model to establish. Absent a baseline, the probabilistic findings are difficult to interpret in isolation: some deviation from Benford's Law occurs even in legitimate small environmental datasets, and cross-site variance depends heavily on assumed priors. We construct a comparison corpus of 34 similarly structured, independently audited freight-corridor and industrial stormwater compliance studies to supply that baseline. Testing against the three treated outfalls' true recomputed reduction figures (91.9%, 92.1%, 92.2%, derived directly from the original study's own published concentration means), we find the 0.22-percentage-point spread across these sites is a statistical outlier relative to the comparison corpus, at a significance level not observed in any of the 34 baseline studies. The digit-distribution and missingness-concentration measures are similarly outliers against this corpus. We take this as independent corroboration that the anomalies reflect a property of this specific dataset rather than a general limitation of the statistical tests used to detect them.
+                        <strong>Abstract:</strong> A widely circulated 2025 preprint identified digit-distribution and missingness anomalies in a single industry-funded stormwater remediation study. Absent a baseline, such findings are difficult to interpret: some deviation from Benford's Law occurs even in legitimate small environmental datasets. We construct a comparison corpus of 34 similarly structured, independently audited freight-corridor and industrial stormwater compliance studies and show that the Harmon Creek dataset is a statistical outlier relative to this baseline on all three previously reported measures, at a significance level not observed in any comparison study. We take this as independent corroboration that the original anomalies reflect a property of this specific dataset rather than a general limitation of the statistical tests used to detect them.
                     </p>
                     <div class="flex flex-wrap items-center gap-4 pt-2 w-full text-xs text-stone-500">
                         <span class="flex items-center gap-1"><i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 52 Citations</span>
@@ -650,6 +650,146 @@
         </div>
     </div>
 
+    <!-- VERSION 1 -->
+    <!-- Second Document Reader Drawer: Olivia Hart's Rebuttal -->
+    <div id="oliviaDrawer" class="fixed inset-y-0 right-0 w-full lg:w-[55%] bg-white border-l border-stone-200 shadow-2xl z-50 transform translate-x-full drawer-transition flex flex-col">
+
+        <!-- Sheet Header Bar -->
+        <div class="px-4 sm:px-6 py-4 border-b border-stone-200 flex items-center justify-between bg-stone-50">
+            <div class="flex items-center gap-2.5">
+                <button onclick="closeOliviaDrawer()" class="p-1.5 hover:bg-stone-200 rounded text-stone-600 transition" aria-label="Close document panel">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+                <span class="text-xs font-mono font-bold tracking-wider text-stone-500 uppercase">Document Reader</span>
+            </div>
+            <div>
+                <button class="px-3 py-1.5 bg-white border border-stone-200 hover:bg-stone-50 text-stone-700 rounded text-xs font-medium flex items-center gap-1.5 transition">
+                    <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+                </button>
+            </div>
+        </div>
+
+        <!-- Sheet Scrollable Document Text Content -->
+        <div class="p-6 sm:p-8 lg:p-12 overflow-y-auto flex-1 max-w-3xl mx-auto space-y-6">
+
+            <!-- Metadata Headers -->
+            <div class="space-y-3 border-b border-stone-200 pb-6">
+                <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-stone-400">
+                    <span>Index Reference: #2503.STAT</span>
+                    <span>•</span>
+                    <span>Posted: March 14, 2025</span>
+                </div>
+                <h1 class="serif-text text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 leading-tight">
+                    Statistical Anomalies in the Harmon Creek 6PPD-Quinone Remediation Dataset: A Reanalysis of Laurent et al. (2021)
+                </h1>
+
+                <div class="pt-2 text-stone-800 text-xs sm:text-sm space-y-1">
+                    <div><strong>Olivia Hart, MMath (Cantab.)</strong> — Independent</div>
+                </div>
+                <div class="pt-1 text-xs text-stone-500 font-mono">
+                    ORCID: 0000-0002-8841-773X
+                </div>
+            </div>
+
+            <!-- Formal Abstract Section -->
+            <div class="bg-stone-50 border-l-2 border-stone-400 p-4 rounded-r space-y-1.5">
+                <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono">Abstract</h4>
+                <p class="text-stone-700 text-xs sm:text-sm leading-relaxed italic">
+                    We reanalyze the publicly available summary statistics from Laurent et al. (2021), a widely cited, industry-funded assessment of a stormwater biofiltration retrofit at a major logistics facility, previously credited with substantially improving 6PPD-quinone loading outcomes in an urban salmon-bearing stream. Three purely statistical irregularities are identified from the published tables alone; no raw or event-level data were available to the author. First, the leading-digit distribution of reported concentration measurements departs significantly from the expectation under Benford's Law for naturally occurring, multi-order-of-magnitude environmental data (&chi;&sup2; = 14.7, df = 8, p &lt; 0.01), a pattern more consistent with rounded, adjusted, or partially constructed values than with unmodified field measurements. Second, the reported post-retrofit reduction (92.0%) is identical to one decimal place at three of four independent treatment outfalls; under any physically plausible model of site-to-site variance in soil media composition, flow rate, and antecedent conditions, the probability of this degree of agreement occurring by chance is vanishingly small. Third, the exclusion of the single highest pre-retrofit measurement site (HC-6) from post-retrofit summary statistics — attributed to equipment failure recurring at that site alone — is itself statistically anomalous under a missing-completely-at-random null, and any reasonable imputation for the missing site materially lowers the facility-wide reduction estimate. None of these findings speak to the underlying environmental chemistry, which is outside the scope of this note; they concern only the internal statistical consistency of the published dataset. We take no position on intent.
+                </p>
+            </div>
+
+            <!-- Keywords -->
+            <div class="text-xs text-stone-500 flex flex-wrap gap-2 items-center">
+                <span class="font-bold uppercase tracking-widest text-stone-400 font-mono text-[10px]">Keywords</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">Benford's Law</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">data forensics</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">missing data</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">reanalysis</span>
+                <span class="bg-stone-100 px-2 py-1 rounded">research integrity</span>
+            </div>
+
+            <div class="space-y-4 text-stone-800 text-sm sm:text-base leading-relaxed">
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">1. Introduction</h3>
+                <p>
+                    Laurent et al. (2021) reported that a bioretention retrofit at a freight intermodal facility reduced stormwater 6PPD-quinone concentrations by 92.0% and reduced observed coho pre-spawn mortality from 61% to 9% across a single paired comparison of wet seasons. The study has since been widely cited in industry sustainability reporting and, by the reporting company's own account, materially supported its growth and public reputation over the following several years. Given the single-institution funding arrangement, the modest number of independent monitoring sites (n = 9), and the absence of any published independent replication, a purely statistical audit of the reported summary tables — without reference to the underlying chemistry, which the author is not qualified to evaluate — seemed a reasonable and low-cost check before any party made a material financial decision on the strength of the paper's conclusions.
+                </p>
+                <p>
+                    This note restricts itself to what can be assessed from Tables 1–3 of the published manuscript. No raw chromatography output, autosampler logs, or event-level measurements were available to the author; the original authors state that this material is "available upon request, subject to funder review."
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">2. Digit-Distribution Analysis</h3>
+                <p>
+                    Naturally occurring measurements spanning several orders of magnitude — as stormwater contaminant concentrations typically do — tend to follow Benford's Law: the leading digit 1 occurs roughly 30% of the time, decreasing monotonically through leading digit 9 (Benford, 1938; Nigrini, 2012). This regularity is widely used as a first-pass forensic check on financial, scientific, and electoral datasets, precisely because deviations from it are easy to produce inadvertently through rounding, unit conversion errors, or selective adjustment, and difficult to avoid if one is fabricating or "smoothing" values without deliberately modeling the expected digit distribution. Given the modest sample size here (n = 21 concentration values across Tables 1–2), a standard &chi;&sup2; goodness-of-fit test is not appropriate: several Benford bins have expected counts below 5 at this n (the leading-digit-9 bin, for instance, has an expected count under 1), violating the approximation the &chi;&sup2; test relies on. We instead compute an exact p-value via a Kolmogorov&ndash;Smirnov statistic against the Benford CDF, with the reference distribution obtained by bootstrap resampling (10,000 draws) rather than the asymptotic KS table, again because of the small n. This yields D = 0.31, p = 0.008 &mdash; a significant departure from Benford expectation that does not depend on the &chi;&sup2; approximation.
+                </p>
+                <p>
+                    We additionally test the <strong>terminal (final) digit</strong> distribution of the 21 reported values, which under natural measurement is expected to be approximately uniform over 0&ndash;9 (Preece, 1981; a standard secondary check in data-forensics audits, independent of the leading-digit test above). The terminal digits show marked clustering on 0 and 5 (11 of 21 values, versus an expected 4.2 under uniformity; exact binomial p &lt; 0.001), consistent with rounded, estimated, or back-calculated values rather than instrument output read to full precision. This is a distinct signal from the Benford result &mdash; it does not depend on the same statistical mechanism &mdash; and its presence alongside the leading-digit anomaly strengthens rather than merely duplicates the first finding.
+                </p>
+                <p>
+                    Neither test is individually dispositive at this sample size, but two independent digit-based irregularities pointing the same direction is more informative than either alone; we return to their combined evidential weight in Section 6.
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">3. Improbability of Uniform Percent-Reduction</h3>
+                <p>
+                    The original paper reports a 92.0% reduction in 6PPD-quinone concentration, to one decimal place, at three of its four treated outfalls (HC-3, HC-4, HC-5), with a fourth, untreated comparison producing 86.8%. Bioretention media performance depends on local soil composition, compaction, flow rate, antecedent moisture, and vegetation establishment — quantities that vary meaningfully between physically distinct outfalls even when built to a common design specification. To quantify how surprising this agreement is under a physically realistic model, we ran a Monte Carlo simulation rather than relying on a closed-form variance estimate. Site-level percent reductions were drawn independently for four hypothetical outfalls from a Beta distribution fitted by moment-matching to the range and central tendency reported across five published bioretention field studies with comparable design specifications (McIntyre et al., 2018, among others cited in Table A1 of the supplementary material), giving a between-site standard deviation of approximately 6.4 percentage points. We ran 100,000 simulated trials of four independent sites and counted how often at least three of the four values fell within 0.05 percentage points of one another. This occurred in 14 of 100,000 trials (empirical p &asymp; 0.00014). We repeated this under a deliberately conservative halved-variance assumption (3.2 points) to check robustness; even there, the same event occurred in only 340 of 100,000 trials (p &asymp; 0.0034). The qualitative conclusion — that this degree of agreement is very unlikely under any physically plausible model of independent site performance — holds across a reasonable range of variance assumptions, not just the central estimate. Full simulation code and the fitted reference distribution parameters are provided in the supplementary repository so the result can be independently reproduced.
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">4. Missingness at the Highest-Concentration Site</h3>
+                <p>
+                    Site HC-6 recorded the highest pre-retrofit concentration in the study (4.92 &mu;g/L, more than double the next-highest site) and is the only site excluded from post-retrofit summary statistics, attributed to autosampler calibration failure at 3 of 10 Wet Season 2 sampling events. This leaves <strong>7 valid post-retrofit readings at HC-6</strong> that were not incorporated into the published facility-wide average in any form — a simpler and more direct check than the counterfactual modeling below, and the first thing we examine.
+                </p>
+                <p>
+                    <em>4.1 Direct use of the available HC-6 readings.</em> Using the mean of the 7 available HC-6 post-retrofit measurements directly, in place of exclusion, lowers the facility-wide reduction estimate from the reported 92.0% to 79.4%. A trimmed facility-wide estimate (retaining all sites at their full available n, rather than dropping HC-6 to n = 0) produces a comparable figure of 80.1%. That the published analysis excluded a site with a plurality of valid data (7 of 10 readings) rather than simply reporting on that data, or explicitly flagging it as partial, is itself worth noting independent of any missingness model below.
+                </p>
+                <p>
+                    <em>4.2 Clustering of the failures.</em> Beyond the fact that failures occurred only at HC-6, we examine <em>when</em> they occurred. The three failed readings at HC-6 all fall within the season's first three sampling events, coinciding with the highest-flow storm events of Wet Season 2, rather than being scattered randomly across the ten-event window. That the failures cluster specifically in the highest-flow, most-concentrated portion of the season is a second and distinct anomaly from clustering by site alone: it suggests the equipment failures correlate with the conditions most likely to produce the highest readings, which is a stronger and more specific version of a not-at-random mechanism than site-level clustering by itself.
+                </p>
+                <p>
+                    <em>4.3 Formal MCAR test.</em> Beyond the binomial, site-only argument in an earlier draft of this note, we apply Little's MCAR test (Little, 1988) to the full site-by-event missingness pattern, which jointly tests whether missingness is unrelated to observed covariates (site, event date, concurrent flow rate) rather than site alone. This yields &chi;&sup2; = 19.8, df = 6, p &lt; 0.01, rejecting MCAR and supporting the missing-not-at-random interpretation on firmer footing than the original single-site binomial argument. Substituting HC-6's pre-retrofit value into the reduction model fit to the other three treated sites, holding the fitted relationship between pre-retrofit concentration and reduction magnitude constant, produces a similar downward correction to the direct approach in 4.1, lowering the facility-wide post-retrofit average below the headline 92.0% figure by a material margin under either method.
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">5. Discussion</h3>
+                <p>
+                    Each of the three irregularities above is individually explainable by an innocent cause — rounding conventions, genuinely excellent and coincidentally similar engineering performance, or ordinary equipment failure. Taken together, however, they form a pattern that a purely statistical audit is well suited to flag and poorly suited to resolve. Resolution requires exactly the material the original authors describe as available only "subject to funder review": event-level chromatography output, unredacted autosampler maintenance logs, and — ideally — independent field resampling at HC-6 by a party with no funding relationship to the facility operator. We are not in a position to conduct that resampling and take no position on whether the irregularities identified here reflect data manipulation, uncorrected instrument or transcription error, or some combination; we simply note that the current published record does not, on its own statistical merits, support the confidence with which its conclusions have been publicly represented.
+                </p>
+
+                <h3 class="serif-text text-lg font-bold tracking-tight text-stone-950 pt-4">6. Combining the Evidence</h3>
+                <p>
+                    The irregularities above do not stand alone. The tests in Sections 2–4 are statistically independent of one another — they draw on different features of the published data (leading digits, terminal digits, cross-site variance in reduction percentages, and a missingness mechanism) and would not be expected to co-occur under any single innocent process. Combining the four p-values via Fisher's method (&chi;&sup2; = 41.2, df = 8) gives a joint p-value on the order of 10<sup>-6</sup>, substantially smaller than any individual test taken alone. This does not establish intent — data problems of this shape can also arise from uncorrected instrument drift, transcription error compounding across a small dataset, or well-intentioned but undisclosed data cleaning — but it does mean that an innocent-explanation defense now has to hold simultaneously across four independent statistical signals, which is a materially stronger requirement than defending any one of them individually.
+                </p>
+
+                <!-- Funding & COI -->
+                <div class="bg-stone-50 border border-stone-200 rounded p-4 space-y-3 text-xs sm:text-sm">
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono mb-1">Funding</h4>
+                        <p>No funding was received for this analysis.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono mb-1">Conflict of Interest Statement</h4>
+                        <p>This analysis was originally prepared privately in October 2024 for a personal acquaintance's investment due-diligence and was not, at that time, intended for wider circulation. It was shared informally within a small circle over the following months before a science journalist investigating Alpine Logistics Corp's public sustainability claims obtained a copy through that informal circulation and posted it to arXiv in March 2025; the author was not otherwise involved in its publication. The author reports a personal, non-financial acquaintance with the corresponding author of Laurent et al. (2021). Asked for comment after the analysis began circulating publicly, the author is reported to have said: <em>"wait people are actually using my notes to drag her?? it's literally just maths, nothing personal!! i didn't even want this public. people are turning equations into a witch hunt nowadays :( put some respect on the brilliant environmental scientist, she literally did the actual heavy lifting in the mud!"</em></p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono mb-1">Data Availability</h4>
+                        <p>All figures used are drawn from the publicly available tables of Laurent et al. (2021). No new data were collected.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- References Footer Section -->
+            <div class="pt-6 border-t border-stone-200 text-xs text-stone-400 space-y-1 font-mono">
+                <div>[1] Laurent, C., Marsh, O., Aguilar, R., Whitfield, H. "Tire-Derived 6PPD-Quinone Loading in Stormwater Runoff Along High-Volume Freight Corridors." Index Reference #2105.6PPDQ, May 2021.</div>
+                <div>[2] Benford, F. "The Law of Anomalous Numbers." <em>Proc. Am. Philos. Soc.</em>, 78(4), 551–572, 1938.</div>
+                <div>[3] Nigrini, M.J. <em>Benford's Law: Applications for Forensic Accounting, Auditing, and Fraud Detection.</em> Wiley, 2012.</div>
+                <div>[4] Little, R.J.A., Rubin, D.B. <em>Statistical Analysis with Missing Data</em>, 3rd ed. Wiley, 2019.</div>
+                <div>[5] McIntyre, J.K., Prat, J., Cameron, J., et al. "Green stormwater infrastructure reduces the toxicity of urban runoff to salmonids." <em>Environ. Sci. Technol.</em>, 52(19), 10841–10851, 2018.</div>
+                <div>[6] Preece, D.A. "Distributions of Final Digits in Data." <em>The Statistician</em>, 30(1), 31–60, 1981.</div>
+                <div>[7] Little, R.J.A. "A Test of Missing Completely at Random for Multivariate Data with Missing Values." <em>J. Am. Stat. Assoc.</em>, 83(404), 1198–1202, 1988.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VERSION 2 -->
     <!-- Second Document Reader Drawer: Olivia Hart's Rebuttal -->
     <div id="oliviaDrawer" class="fixed inset-y-0 right-0 w-full lg:w-[55%] bg-white border-l border-stone-200 shadow-2xl z-50 transform translate-x-full drawer-transition flex flex-col">
 
@@ -836,7 +976,7 @@
                     </div>
                     <div>
                         <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono mb-1">Conflict of Interest Statement</h4>
-                        <p>This analysis was originally prepared privately in October 2024 for a personal acquaintance's investment due-diligence and was not, at that time, intended for wider circulation. It was shared informally within a small circle over the following months before a science journalist investigating Alpine Logistics Corp's public sustainability claims obtained a copy through that informal circulation and posted it to arXiv in March 2025; the author was not otherwise involved in its publication. The author reports a personal, non-financial acquaintance with the corresponding author of Laurent et al. (2021). Asked for comment after the analysis began circulating publicly, the author is reported to have said: <em>"wait people are actually using my notes to drag her?? it's literally just maths, nothing personal!! i didn't even want this public. people are turning equations into a witch hunt nowadays :( put some respect on the brilliant environmental scientist, she literally did the actual heavy lifting in the mud!"</em></p>
+                        <p>This analysis was originally prepared privately in October 2024 for a personal acquaintance's investment due-diligence and was not, at that time, intended for wider circulation. It was shared informally within a small circle over the following months before a science journalist investigating Alpine Logistics Corp's public sustainability claims obtained a copy through that informal circulation and posted it to arXiv in March 2025; the author was not otherwise involved in its publication. The author reports a personal, non-financial acquaintance with the corresponding author of Laurent et al. (2021). Asked for comment after the analysis began circulating publicly, the author is reported to have said: <em>"wait people are actually upset about this?? it's literally just maths, nothing personal!! people are fighting anything nowadays :("</em></p>
                     </div>
                     <div>
                         <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500 font-mono mb-1">Data Availability</h4>
